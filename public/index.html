@@ -493,14 +493,7 @@ h1, h2, h3, h4, .brand { font-family: 'Outfit', 'Palatino Linotype', serif; }
     <div id="auth-step-otp" class="auth-step" style="display:none">
       <div class="modal-title">Thibitisha Simu</div>
       <div class="modal-sub" id="auth-otp-hint">Nambari ya tarakimu 6 imetumwa</div>
-      <div class="otp-inputs" id="otp-inputs">
-        <input class="otp-input" maxlength="1" type="number" oninput="otpNext(this,0)">
-        <input class="otp-input" maxlength="1" type="number" oninput="otpNext(this,1)">
-        <input class="otp-input" maxlength="1" type="number" oninput="otpNext(this,2)">
-        <input class="otp-input" maxlength="1" type="number" oninput="otpNext(this,3)">
-        <input class="otp-input" maxlength="1" type="number" oninput="otpNext(this,4)">
-        <input class="otp-input" maxlength="1" type="number" oninput="otpNext(this,5)">
-      </div>
+      <input id="otp-single" type="number" class="form-input" maxlength="6" placeholder="Weka nambari 6 hapa" style="font-size:24px;text-align:center;letter-spacing:8px;padding:12px;">
       <button class="btn btn-primary btn-full btn-lg" id="auth-verify-btn" onclick="verifyOTP()">Thibitisha</button>
       <div style="margin-top:12px;text-align:center">
         <button class="btn btn-ghost" onclick="showAuthStep('phone')">← Rudi | Badilisha nambari</button>
@@ -1063,8 +1056,7 @@ function otpNext(el, idx) {
   if (idx === 5 && el.value) verifyOTP();
 }
 async function verifyOTP() {
-  const inputs = document.querySelectorAll('.otp-input');
-  const code = [...inputs].map(i => i.value).join('');
+  const code = document.getElementById('otp-single').value.trim();
   const phone = '0' + document.getElementById('auth-phone').value.trim().replace(/^0/, '').replace(/\s/g, '');
   const name  = document.getElementById('auth-name').value.trim();
   if (code.length < 6) { toast('Ingiza nambari zote 6', 'error'); return; }
