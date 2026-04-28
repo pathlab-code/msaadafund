@@ -1,0 +1,1446 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="MsaadaFund — Jukwaa la kukusanya fedha Tanzania. M-Pesa, Tigo Pesa, Airtel Money.">
+<meta property="og:title" content="MsaadaFund — Kukusanya Fedha Tanzania">
+<meta property="og:description" content="Pamoja Tunaweza — Jukwaa la kwanza la kukusanya fedha Tanzania">
+<meta name="theme-color" content="#3B6D11">
+<title>MsaadaFund — Kukusanya Fedha Tanzania</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/outfit/400.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/outfit/600.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/nunito/400.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/nunito/600.css">
+<style>
+:root {
+  --green:       #3B6D11;
+  --green-dark:  #27500A;
+  --green-mid:   #639922;
+  --green-light: #EAF3DE;
+  --green-pale:  #F3F9EC;
+  --amber:       #854F0B;
+  --amber-mid:   #BA7517;
+  --amber-light: #FAEEDA;
+  --coral:       #993C1D;
+  --coral-light: #FAECE7;
+  --teal:        #0F6E56;
+  --teal-light:  #E1F5EE;
+  --blue-light:  #E6F1FB;
+  --blue:        #0C447C;
+  --radius:      10px;
+  --radius-sm:   6px;
+  --shadow:      0 1px 3px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Nunito', 'Trebuchet MS', sans-serif;
+  font-size: 15px;
+  line-height: 1.65;
+  color: #1a1a1a;
+  background: #f7f9f4;
+  min-height: 100vh;
+}
+h1, h2, h3, h4, .brand { font-family: 'Outfit', 'Palatino Linotype', serif; }
+
+/* ── Layout ─────────────────────────────────────── */
+.page { display: none; }
+.page.active { display: block; }
+.container { max-width: 1080px; margin: 0 auto; padding: 0 1.25rem; }
+.center { text-align: center; }
+
+/* ── Nav ─────────────────────────────────────────── */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: #fff;
+  border-bottom: 1px solid #e8eee2;
+  height: 58px;
+  display: flex; align-items: center;
+}
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  width: 100%;
+}
+.brand { font-size: 20px; font-weight: 600; color: var(--green-dark); cursor: pointer; user-select: none; }
+.brand em { color: var(--amber-mid); font-style: normal; }
+.nav-links { display: flex; gap: 4px; }
+.nav-btn {
+  background: none; border: none; padding: 6px 11px;
+  border-radius: var(--radius-sm); font-size: 13px; font-weight: 600;
+  color: #555; cursor: pointer; font-family: 'Nunito', sans-serif;
+  transition: background 0.15s, color 0.15s;
+}
+.nav-btn:hover, .nav-btn.active { background: var(--green-pale); color: var(--green-dark); }
+.nav-right { display: flex; gap: 8px; align-items: center; }
+.nav-cta {
+  background: var(--green); color: #fff; border: none;
+  padding: 7px 16px; border-radius: var(--radius-sm); font-size: 13px; font-weight: 600;
+  cursor: pointer; font-family: 'Nunito', sans-serif; transition: background 0.15s;
+}
+.nav-cta:hover { background: var(--green-mid); }
+.nav-user {
+  display: flex; align-items: center; gap: 6px; cursor: pointer;
+  padding: 4px 8px; border-radius: var(--radius-sm);
+}
+.nav-user:hover { background: var(--green-pale); }
+.avatar {
+  width: 30px; height: 30px; border-radius: 50%;
+  background: var(--green-light); color: var(--green-dark);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 600; font-family: 'Outfit', sans-serif;
+}
+
+/* ── Buttons ─────────────────────────────────────── */
+.btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: 'Nunito', sans-serif; font-weight: 600; cursor: pointer;
+  border-radius: var(--radius-sm); transition: all 0.15s; border: none;
+}
+.btn-primary { background: var(--green); color: #fff; padding: 10px 20px; font-size: 14px; }
+.btn-primary:hover { background: var(--green-mid); }
+.btn-secondary { background: #fff; color: var(--green); border: 1.5px solid var(--green); padding: 9px 18px; font-size: 14px; }
+.btn-secondary:hover { background: var(--green-pale); }
+.btn-ghost { background: none; color: #666; padding: 8px 12px; font-size: 13px; }
+.btn-ghost:hover { background: #f0f0f0; }
+.btn-full { width: 100%; justify-content: center; }
+.btn-lg { padding: 12px 24px; font-size: 15px; }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* ── Hero ─────────────────────────────────────────── */
+.hero {
+  background: linear-gradient(135deg, var(--green-light) 0%, #f0f7e6 100%);
+  padding: 3.5rem 1.25rem 3rem;
+  text-align: center;
+  border-bottom: 1px solid #d8edc4;
+}
+.hero-pill {
+  display: inline-block; background: var(--amber-light); color: var(--amber);
+  font-size: 11px; font-weight: 600; padding: 3px 12px;
+  border-radius: 20px; margin-bottom: 1rem; letter-spacing: 0.06em; text-transform: uppercase;
+}
+.hero h1 { font-size: clamp(28px, 5vw, 40px); font-weight: 600; color: var(--green-dark); margin-bottom: 0.75rem; line-height: 1.2; }
+.hero-sub { font-size: 16px; color: #4a6535; max-width: 500px; margin: 0 auto 1.75rem; }
+.hero-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+.hero-trust { margin-top: 2rem; display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+.trust-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: #567a3d; }
+.trust-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green-mid); }
+
+/* ── Stats bar ───────────────────────────────────── */
+.stats-bar {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  background: #fff; border-bottom: 1px solid #e8eee2;
+}
+.stat { padding: 1.25rem; text-align: center; border-right: 1px solid #e8eee2; }
+.stat:last-child { border-right: none; }
+.stat-n { font-family: 'Outfit', sans-serif; font-size: 24px; font-weight: 600; color: var(--green); }
+.stat-l { font-size: 11px; color: #7a9060; margin-top: 2px; text-transform: uppercase; letter-spacing: 0.04em; }
+
+/* ── Section ─────────────────────────────────────── */
+.section { padding: 2.5rem 0; }
+.section-sm { padding: 1.5rem 0; }
+.section-alt { background: #fff; }
+.section-title { font-size: 22px; font-weight: 600; color: #1a1a1a; margin-bottom: 0.25rem; }
+.section-sub { font-size: 14px; color: #666; margin-bottom: 1.5rem; }
+.section-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 1.25rem; }
+
+/* ── Category cards ──────────────────────────────── */
+.cat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.cat-card {
+  padding: 1.25rem 1rem;
+  border-radius: var(--radius);
+  border: 1.5px solid #e8eee2;
+  background: #fff;
+  cursor: pointer; text-align: center;
+  transition: border-color 0.2s, transform 0.15s;
+}
+.cat-card:hover { border-color: var(--green); transform: translateY(-1px); }
+.cat-icon {
+  width: 44px; height: 44px; border-radius: 50%;
+  margin: 0 auto 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 600;
+}
+.cat-name { font-weight: 600; font-size: 14px; color: #1a1a1a; }
+.cat-desc { font-size: 11px; color: #888; margin-top: 3px; }
+.cat-count { font-size: 11px; color: var(--green); font-weight: 600; margin-top: 4px; }
+
+/* ── Campaign cards ──────────────────────────────── */
+.campaigns-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 18px; }
+.campaign-card {
+  background: #fff;
+  border: 1px solid #e8eee2;
+  border-radius: var(--radius);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.campaign-card:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+.campaign-img {
+  height: 140px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Outfit', sans-serif; font-size: 36px; font-weight: 600;
+  position: relative; overflow: hidden;
+}
+.campaign-img img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
+.campaign-badge {
+  font-size: 10px; font-weight: 600; padding: 2px 8px;
+  border-radius: 4px; display: inline-block; margin-bottom: 6px;
+  text-transform: uppercase; letter-spacing: 0.04em;
+}
+.badge-dharura  { background: var(--coral-light);  color: var(--coral); }
+.badge-biashara { background: var(--amber-light);  color: var(--amber); }
+.badge-jamii    { background: var(--teal-light);   color: var(--teal); }
+.campaign-body { padding: 14px; }
+.campaign-title { font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 600; line-height: 1.35; margin-bottom: 4px; }
+.campaign-meta-row { display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: #888; margin-bottom: 10px; }
+.urgency-tag { color: var(--coral); background: var(--coral-light); padding: 1px 6px; border-radius: 4px; font-weight: 600; }
+.progress { height: 5px; background: #eee; border-radius: 3px; overflow: hidden; margin-bottom: 8px; }
+.progress-fill { height: 100%; background: var(--green); border-radius: 3px; transition: width 0.6s ease; }
+.campaign-footer { display: flex; justify-content: space-between; align-items: center; font-size: 12px; }
+.raised { font-weight: 600; color: var(--green); }
+.percent { color: #888; }
+.donate-btn {
+  width: 100%; margin-top: 10px; padding: 8px;
+  background: var(--green-light); color: var(--green);
+  border: 1.5px solid var(--green); border-radius: var(--radius-sm);
+  font-size: 12px; font-weight: 600; cursor: pointer;
+  font-family: 'Nunito', sans-serif; transition: all 0.15s;
+}
+.donate-btn:hover { background: var(--green); color: #fff; }
+
+/* ── Steps ───────────────────────────────────────── */
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.step { text-align: center; padding: 1.5rem 1rem; }
+.step-num {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--amber-light); color: var(--amber);
+  font-weight: 600; font-size: 15px;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 10px;
+  font-family: 'Outfit', sans-serif;
+}
+.step-title { font-weight: 600; font-size: 14px; margin-bottom: 5px; font-family: 'Outfit', sans-serif; }
+.step-desc { font-size: 12px; color: #666; }
+
+/* ── Browse ──────────────────────────────────────── */
+.browse-controls {
+  background: #fff; padding: 1.25rem; border-radius: var(--radius);
+  border: 1px solid #e8eee2; margin-bottom: 1.5rem;
+}
+.search-row { display: flex; gap: 10px; margin-bottom: 12px; }
+.search-input {
+  flex: 1; padding: 9px 14px; border: 1px solid #d0dbc8;
+  border-radius: var(--radius-sm); font-size: 13px;
+  font-family: 'Nunito', sans-serif; color: #1a1a1a;
+  background: #fafafa;
+}
+.filter-tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+.filter-tab {
+  padding: 6px 14px; border-radius: 20px;
+  border: 1px solid #d0dbc8; background: #fff;
+  font-size: 12px; cursor: pointer; font-family: 'Nunito', sans-serif;
+  color: #666; font-weight: 600; transition: all 0.15s;
+}
+.filter-tab.active { background: var(--green); color: #fff; border-color: var(--green); }
+.filter-tab:hover:not(.active) { border-color: var(--green); color: var(--green); }
+
+/* ── Forms ───────────────────────────────────────── */
+.form-card { background: #fff; border: 1px solid #e8eee2; border-radius: var(--radius); padding: 2rem; }
+.form-title { font-size: 20px; font-weight: 600; margin-bottom: 4px; }
+.form-subtitle { font-size: 13px; color: #666; margin-bottom: 1.75rem; }
+.form-group { margin-bottom: 1.125rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.form-label { display: block; font-size: 13px; font-weight: 600; color: #1a1a1a; margin-bottom: 5px; }
+.form-sublabel { font-size: 11px; color: #888; margin-bottom: 5px; display: block; }
+.form-input, .form-select, .form-textarea {
+  width: 100%; padding: 9px 12px;
+  border: 1px solid #d0dbc8; border-radius: var(--radius-sm);
+  font-size: 13px; font-family: 'Nunito', sans-serif;
+  color: #1a1a1a; background: #fafafa;
+  transition: border-color 0.15s;
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  outline: none; border-color: var(--green);
+  background: #fff; box-shadow: 0 0 0 3px rgba(59,109,17,0.08);
+}
+.form-input.error { border-color: var(--coral); }
+.form-textarea { resize: vertical; min-height: 90px; }
+.form-error { font-size: 11px; color: var(--coral); margin-top: 4px; }
+.form-hint { font-size: 11px; color: #888; margin-top: 4px; }
+
+/* Category selector */
+.cat-selector { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.cat-option {
+  padding: 10px 6px; border: 1.5px solid #e0e8d8; border-radius: var(--radius-sm);
+  text-align: center; cursor: pointer; font-size: 12px; font-weight: 600;
+  font-family: 'Nunito', sans-serif; color: #777; background: #fff; transition: all 0.15s;
+}
+.cat-option:hover { border-color: var(--green); color: var(--green); }
+.cat-option.selected { border-color: var(--green); background: var(--green-light); color: var(--green-dark); }
+.cat-option-icon { font-size: 18px; margin-bottom: 4px; display: block; }
+
+/* Payment method selector */
+.pay-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+.pay-option {
+  padding: 12px; border: 1.5px solid #e0e8d8; border-radius: var(--radius-sm);
+  cursor: pointer; background: #fff;
+  display: flex; align-items: center; gap: 10px; transition: all 0.15s;
+}
+.pay-option:hover { border-color: var(--green); }
+.pay-option.selected { border: 2px solid var(--green); background: var(--green-pale); }
+.pay-icon {
+  width: 36px; height: 36px; border-radius: 7px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 600;
+  flex-shrink: 0;
+}
+.pay-name { font-size: 13px; font-weight: 600; color: #1a1a1a; }
+.pay-desc { font-size: 10px; color: #888; }
+
+/* Payment details box */
+.pay-details-box {
+  background: var(--green-pale); border: 1px solid #c8e0a8;
+  border-radius: var(--radius-sm); padding: 14px; margin-top: 12px;
+}
+.pay-instruction { font-size: 12px; color: #4a6535; margin-bottom: 6px; }
+.pay-number { font-family: 'Outfit', sans-serif; font-size: 22px; font-weight: 600; color: var(--green-dark); letter-spacing: 0.05em; }
+.pay-hint { font-size: 11px; color: #7a9060; margin-top: 5px; }
+
+/* Amount grid */
+.amount-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 12px; }
+.amount-btn {
+  padding: 10px 6px; border: 1.5px solid #e0e8d8; border-radius: var(--radius-sm);
+  text-align: center; cursor: pointer; font-size: 12px; font-weight: 600;
+  font-family: 'Nunito', sans-serif; color: #666; background: #fff; transition: all 0.15s;
+}
+.amount-btn:hover { border-color: var(--green); color: var(--green); }
+.amount-btn.selected { background: var(--green); color: #fff; border-color: var(--green); }
+
+/* ── Donate page ─────────────────────────────────── */
+.donate-summary {
+  background: #fff; border: 1px solid #e8eee2; border-radius: var(--radius);
+  padding: 16px; margin-bottom: 1.5rem;
+}
+.donate-campaign-title { font-size: 16px; font-weight: 600; margin: 6px 0; }
+.donate-layout { display: grid; grid-template-columns: 1fr 1.5fr; gap: 2rem; align-items: start; }
+
+/* ── Auth modal ──────────────────────────────────── */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 1000;
+  background: rgba(0,0,0,0.5);
+  display: flex; align-items: center; justify-content: center;
+  padding: 1rem;
+}
+.modal-overlay.hidden { display: none; }
+.modal {
+  background: #fff; border-radius: var(--radius);
+  padding: 2rem; width: 100%; max-width: 400px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+}
+.modal-title { font-size: 20px; font-weight: 600; margin-bottom: 4px; }
+.modal-sub { font-size: 13px; color: #666; margin-bottom: 1.5rem; }
+.phone-input-wrapper { position: relative; }
+.phone-prefix {
+  position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+  font-size: 13px; color: #888; pointer-events: none;
+}
+.phone-input-wrapper .form-input { padding-left: 36px; }
+.otp-inputs { display: flex; gap: 8px; margin-bottom: 1rem; }
+.otp-input {
+  flex: 1; height: 48px; text-align: center; font-size: 20px; font-weight: 600;
+  border: 1.5px solid #d0dbc8; border-radius: var(--radius-sm);
+  font-family: 'Outfit', sans-serif;
+}
+.otp-input:focus { outline: none; border-color: var(--green); box-shadow: 0 0 0 3px rgba(59,109,17,0.08); }
+
+/* ── Success screen ──────────────────────────────── */
+.success-icon {
+  width: 64px; height: 64px; border-radius: 50%;
+  background: var(--green-light); margin: 0 auto 1.25rem;
+  display: flex; align-items: center; justify-content: center;
+}
+.success-title { font-size: 26px; font-weight: 600; color: var(--green-dark); margin-bottom: 0.5rem; }
+.success-sub { font-size: 14px; color: #666; margin-bottom: 2rem; line-height: 1.7; }
+
+/* ── Loading ─────────────────────────────────────── */
+.skeleton { background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; border-radius: 6px; }
+@keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+.skeleton-card { height: 280px; border-radius: var(--radius); margin-bottom: 0; }
+.loading-spinner {
+  width: 20px; height: 20px; border: 2px solid #fff; border-top-color: transparent;
+  border-radius: 50%; animation: spin 0.7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.loading-overlay {
+  position: fixed; inset: 0; z-index: 2000;
+  background: rgba(255,255,255,0.8);
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 12px;
+}
+.loading-overlay.hidden { display: none; }
+.big-spinner {
+  width: 40px; height: 40px; border: 3px solid var(--green-light);
+  border-top-color: var(--green); border-radius: 50%; animation: spin 0.8s linear infinite;
+}
+
+/* ── Toast ───────────────────────────────────────── */
+.toast-container { position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 3000; display: flex; flex-direction: column; gap: 8px; }
+.toast {
+  background: #1a1a1a; color: #fff; padding: 12px 16px;
+  border-radius: var(--radius-sm); font-size: 13px; font-weight: 600;
+  max-width: 320px; box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  animation: slideUp 0.3s ease; border-left: 4px solid var(--green);
+}
+.toast.error { border-left-color: var(--coral); }
+.toast.info  { border-left-color: var(--blue); }
+@keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ── Footer ──────────────────────────────────────── */
+.footer {
+  background: #fff; border-top: 1px solid #e8eee2;
+  padding: 2rem 1.25rem;
+}
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 2rem; margin-bottom: 1.5rem; }
+.footer-brand { font-size: 18px; font-weight: 600; color: var(--green-dark); margin-bottom: 8px; }
+.footer-desc { font-size: 13px; color: #666; line-height: 1.7; }
+.footer-heading { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: #888; margin-bottom: 12px; }
+.footer-links { list-style: none; }
+.footer-links li { margin-bottom: 6px; }
+.footer-links a { font-size: 13px; color: #666; text-decoration: none; }
+.footer-links a:hover { color: var(--green); }
+.footer-bottom { border-top: 1px solid #e8eee2; padding-top: 1.25rem; display: flex; justify-content: space-between; font-size: 12px; color: #888; flex-wrap: wrap; gap: 8px; }
+.pay-badges { display: flex; gap: 6px; flex-wrap: wrap; }
+.pay-badge {
+  padding: 3px 8px; border-radius: 4px; font-size: 10px; font-weight: 600;
+  font-family: 'Outfit', sans-serif;
+}
+
+/* ── Breadcrumb / Back ───────────────────────────── */
+.back-btn {
+  background: none; border: none; color: #666; font-size: 13px;
+  cursor: pointer; padding: 0; font-family: 'Nunito', sans-serif;
+  display: flex; align-items: center; gap: 4px; margin-bottom: 1.25rem;
+}
+.back-btn:hover { color: var(--green); }
+
+/* ── Profile page ────────────────────────────────── */
+.profile-header {
+  background: #fff; border: 1px solid #e8eee2; border-radius: var(--radius);
+  padding: 1.75rem; margin-bottom: 1.5rem;
+  display: flex; gap: 1.25rem; align-items: center;
+}
+.profile-avatar {
+  width: 64px; height: 64px; border-radius: 50%;
+  background: var(--green-light); color: var(--green-dark);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; font-weight: 600; font-family: 'Outfit', sans-serif; flex-shrink: 0;
+}
+.stat-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 1.5rem; }
+.stat-card { background: #fff; border: 1px solid #e8eee2; border-radius: var(--radius); padding: 1rem; text-align: center; }
+.stat-card-n { font-size: 22px; font-weight: 600; color: var(--green); font-family: 'Outfit', sans-serif; }
+.stat-card-l { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 0.04em; }
+
+/* ── Divider ─────────────────────────────────────── */
+.divider { height: 1px; background: #e8eee2; margin: 0; }
+
+/* ── Responsive ──────────────────────────────────── */
+@media (max-width: 700px) {
+  .cat-grid { grid-template-columns: repeat(3, 1fr); }
+  .campaigns-grid { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .stat-cards { grid-template-columns: repeat(3, 1fr); }
+  .form-row { grid-template-columns: 1fr; }
+  .donate-layout { grid-template-columns: 1fr; }
+  .amount-grid { grid-template-columns: repeat(2, 1fr); }
+  .nav-links .nav-btn:not(.active) { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- Loading overlay -->
+<div id="loading-overlay" class="loading-overlay hidden">
+  <div class="big-spinner"></div>
+  <span style="font-size:13px;color:#666;" id="loading-text">Inapakia...</span>
+</div>
+
+<!-- Toast container -->
+<div class="toast-container" id="toast-container"></div>
+
+<!-- Auth modal -->
+<div id="auth-modal" class="modal-overlay hidden">
+  <div class="modal">
+    <button class="back-btn" onclick="closeAuthModal()" style="margin-bottom:0.5rem">✕ Funga</button>
+    <div id="auth-step-phone" class="auth-step">
+      <div class="modal-title">Ingia / Jisajili</div>
+      <div class="modal-sub">Weka nambari yako ya simu ya Tanzania</div>
+      <div class="form-group">
+        <label class="form-label">Nambari ya Simu</label>
+        <div class="phone-input-wrapper">
+          <span class="phone-prefix">+255</span>
+          <input class="form-input" id="auth-phone" type="tel" placeholder="712 345 678" maxlength="12">
+        </div>
+        <span class="form-hint">M-Pesa, Tigo, Airtel, Halotel — nambari yoyote</span>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Jina lako (hiari)</label>
+        <input class="form-input" id="auth-name" type="text" placeholder="Jina lako kamili">
+      </div>
+      <button class="btn btn-primary btn-full btn-lg" id="auth-send-btn" onclick="sendOTP()">Tuma Nambari ya Uthibitisho</button>
+    </div>
+    <div id="auth-step-otp" class="auth-step" style="display:none">
+      <div class="modal-title">Thibitisha Simu</div>
+      <div class="modal-sub" id="auth-otp-hint">Nambari ya tarakimu 6 imetumwa</div>
+      <div class="otp-inputs" id="otp-inputs">
+        <input class="otp-input" maxlength="1" type="number" oninput="otpNext(this,0)">
+        <input class="otp-input" maxlength="1" type="number" oninput="otpNext(this,1)">
+        <input class="otp-input" maxlength="1" type="number" oninput="otpNext(this,2)">
+        <input class="otp-input" maxlength="1" type="number" oninput="otpNext(this,3)">
+        <input class="otp-input" maxlength="1" type="number" oninput="otpNext(this,4)">
+        <input class="otp-input" maxlength="1" type="number" oninput="otpNext(this,5)">
+      </div>
+      <button class="btn btn-primary btn-full btn-lg" id="auth-verify-btn" onclick="verifyOTP()">Thibitisha</button>
+      <div style="margin-top:12px;text-align:center">
+        <button class="btn btn-ghost" onclick="showAuthStep('phone')">← Rudi | Badilisha nambari</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Navigation -->
+<nav class="nav">
+  <div class="container nav-inner">
+    <span class="brand" onclick="showPage('home')">Msaada<em>Fund</em></span>
+    <div class="nav-links">
+      <button class="nav-btn active" id="nav-home" onclick="showPage('home')">Nyumbani</button>
+      <button class="nav-btn" id="nav-browse" onclick="showPage('browse')">Gundua</button>
+      <button class="nav-btn" id="nav-create" onclick="requireAuthThen(()=>showPage('create'))">Anza Kampeni</button>
+    </div>
+    <div class="nav-right">
+      <button class="nav-cta" id="nav-create-cta" onclick="requireAuthThen(()=>showPage('create'))">+ Kampeni</button>
+      <div id="nav-auth-btn" style="display:none">
+        <button class="btn btn-ghost" style="font-size:13px" onclick="openAuthModal()">Ingia</button>
+      </div>
+      <div id="nav-user-area" style="display:none" class="nav-user" onclick="showPage('profile')">
+        <div class="avatar" id="nav-avatar">U</div>
+        <span style="font-size:13px;font-weight:600;" id="nav-username"></span>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ────────── HOME PAGE ─────────────────────────── -->
+<div id="page-home" class="page active">
+  <div class="hero">
+    <div class="hero-pill">🇹🇿 Tanzania · Pamoja Tunaweza</div>
+    <h1>Kukusanya Fedha<br>kwa Haraka na Usalama</h1>
+    <p class="hero-sub">Jukwaa la kwanza Tanzania linalowezesha ukusanyaji wa fedha kwa familia, biashara, na jamii — kwa M-Pesa, Tigo Pesa, Airtel Money na benki.</p>
+    <div class="hero-btns">
+      <button class="btn btn-primary btn-lg" onclick="requireAuthThen(()=>showPage('create'))">Anza Kampeni Yako</button>
+      <button class="btn btn-secondary btn-lg" onclick="showPage('browse')">Gundua Kampeni</button>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item"><div class="trust-dot"></div>M-Pesa Integrated</div>
+      <div class="trust-item"><div class="trust-dot"></div>Tigo Pesa</div>
+      <div class="trust-item"><div class="trust-dot"></div>Airtel Money</div>
+      <div class="trust-item"><div class="trust-dot"></div>Malipo Salama</div>
+    </div>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat"><div class="stat-n">1,247</div><div class="stat-l">Kampeni Hai</div></div>
+    <div class="stat"><div class="stat-n">Sh 4.2B</div><div class="stat-l">Zimekusanywa</div></div>
+    <div class="stat"><div class="stat-n">89,403</div><div class="stat-l">Wafadhili</div></div>
+  </div>
+
+  <div class="section">
+    <div class="container">
+      <div class="section-header">
+        <div><div class="section-title">Aina za Kampeni</div><div class="section-sub">Chagua aina inayokufaa</div></div>
+      </div>
+      <div class="cat-grid">
+        <div class="cat-card" onclick="browseByCategory('dharura')">
+          <div class="cat-icon" style="background:var(--coral-light);color:var(--coral)">SOS</div>
+          <div class="cat-name">Dharura</div>
+          <div class="cat-desc">Harusi · Msiba · Ugonjwa</div>
+        </div>
+        <div class="cat-card" onclick="browseByCategory('biashara')">
+          <div class="cat-icon" style="background:var(--amber-light);color:var(--amber)">BIZ</div>
+          <div class="cat-name">Biashara</div>
+          <div class="cat-desc">Startup · SME · Mradi</div>
+        </div>
+        <div class="cat-card" onclick="browseByCategory('jamii')">
+          <div class="cat-icon" style="background:var(--teal-light);color:var(--teal)">JMI</div>
+          <div class="cat-name">Jamii</div>
+          <div class="cat-desc">Shule · Maji · Barabara</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <div><div class="section-title">Kampeni Maarufu</div><div class="section-sub">Zinazohitaji msaada wako sasa</div></div>
+        <button class="btn btn-ghost" onclick="showPage('browse')">Ona zote →</button>
+      </div>
+      <div class="campaigns-grid" id="home-campaigns">
+        <div class="skeleton skeleton-card"></div>
+        <div class="skeleton skeleton-card"></div>
+        <div class="skeleton skeleton-card"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <div class="container">
+      <div class="section-header center" style="flex-direction:column;align-items:center;gap:4px">
+        <div class="section-title">Jinsi Inavyofanya Kazi</div>
+        <div class="section-sub">Rahisi, salama, ya haraka</div>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-title">Unda Kampeni</div><div class="step-desc">Jaza fomu rahisi, ongeza picha, weka lengo lako la fedha na njia ya kupokea malipo.</div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-title">Shiriki na Marafiki</div><div class="step-desc">Tuma kiungo chako kupitia WhatsApp, SMS, Facebook, au mitandao mingine ya kijamii.</div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-title">Pokea Fedha</div><div class="step-desc">Michango inakuja moja kwa moja kwenye simu yako. Hakuna ada za kuanza — tunakata 2.5% tu.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">MsaadaFund</div>
+          <p class="footer-desc">Jukwaa la kukusanya fedha la Tanzania — kwa familia, biashara na jamii. Tunasaidia Watanzania kufikia malengo yao kwa pamoja.</p>
+          <div class="pay-badges" style="margin-top:12px">
+            <div class="pay-badge" style="background:#EAF3DE;color:#27500A">M-Pesa</div>
+            <div class="pay-badge" style="background:#E6F1FB;color:#0C447C">Tigo Pesa</div>
+            <div class="pay-badge" style="background:#FAECE7;color:#993C1D">Airtel Money</div>
+            <div class="pay-badge" style="background:#FAEEDA;color:#854F0B">Benki</div>
+          </div>
+        </div>
+        <div>
+          <div class="footer-heading">Viungo</div>
+          <ul class="footer-links">
+            <li><a href="#" onclick="showPage('browse')">Gundua Kampeni</a></li>
+            <li><a href="#" onclick="requireAuthThen(()=>showPage('create'))">Anza Kampeni</a></li>
+            <li><a href="#" onclick="showPage('profile')">Akaunti Yangu</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-heading">Msaada</div>
+          <ul class="footer-links">
+            <li><a href="tel:+255800000000">+255 800 000 000</a></li>
+            <li><a href="mailto:msaada@msaadafund.co.tz">msaada@msaadafund.co.tz</a></li>
+            <li><a href="#">WhatsApp</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 MsaadaFund · Dar es Salaam, Tanzania</span>
+        <span>Ada ya Jukwaa: 2.5% tu · Malipo Salama na AzamPay</span>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ────────── BROWSE PAGE ───────────────────────── -->
+<div id="page-browse" class="page">
+  <div class="container" style="padding-top:2rem;padding-bottom:3rem">
+    <button class="back-btn" onclick="showPage('home')">← Nyumbani</button>
+    <div style="margin-bottom:1.5rem">
+      <h1 style="font-size:24px;font-weight:600;margin-bottom:4px">Gundua Kampeni</h1>
+      <p style="font-size:14px;color:#666">Pata kampeni zinazohitaji msaada wako</p>
+    </div>
+    <div class="browse-controls">
+      <div class="search-row">
+        <input class="search-input" id="search-input" type="text" placeholder="Tafuta kampeni, mkoa..." oninput="onSearchChange()">
+      </div>
+      <div class="filter-tabs">
+        <button class="filter-tab active" data-cat="" onclick="setFilter('',this)">Zote</button>
+        <button class="filter-tab" data-cat="dharura" onclick="setFilter('dharura',this)">Dharura</button>
+        <button class="filter-tab" data-cat="biashara" onclick="setFilter('biashara',this)">Biashara</button>
+        <button class="filter-tab" data-cat="jamii" onclick="setFilter('jamii',this)">Jamii</button>
+      </div>
+    </div>
+    <div class="campaigns-grid" id="browse-campaigns">
+      <div class="skeleton skeleton-card"></div>
+      <div class="skeleton skeleton-card"></div>
+      <div class="skeleton skeleton-card"></div>
+    </div>
+    <div id="browse-empty" style="display:none;text-align:center;padding:3rem;color:#888">
+      <div style="font-size:32px;margin-bottom:8px">🔍</div>
+      <div style="font-size:15px;font-weight:600">Kampeni hazijapatikana</div>
+      <div style="font-size:13px;margin-top:4px">Jaribu maneno mengine au chaguo tofauti</div>
+    </div>
+    <div id="browse-load-more" style="display:none;text-align:center;margin-top:2rem">
+      <button class="btn btn-secondary" onclick="loadMoreCampaigns()">Pakia Zaidi</button>
+    </div>
+  </div>
+</div>
+
+<!-- ────────── CREATE PAGE ───────────────────────── -->
+<div id="page-create" class="page">
+  <div class="container" style="padding-top:2rem;padding-bottom:3rem;max-width:680px">
+    <button class="back-btn" onclick="showPage('home')">← Nyumbani</button>
+    <div class="form-card">
+      <div class="form-title">Anza Kampeni Yako</div>
+      <div class="form-subtitle">Jaza fomu hii kwa uangalifu. Kampeni nzuri zinapata michango zaidi!</div>
+
+      <!-- Step indicators -->
+      <div style="display:flex;gap:4px;margin-bottom:1.75rem" id="step-indicators">
+        <div style="flex:1;height:4px;border-radius:2px;background:var(--green)" class="step-ind"></div>
+        <div style="flex:1;height:4px;border-radius:2px;background:#e0e8d8" class="step-ind"></div>
+        <div style="flex:1;height:4px;border-radius:2px;background:#e0e8d8" class="step-ind"></div>
+      </div>
+
+      <div id="create-step-1">
+        <div style="font-size:12px;color:var(--green);font-weight:600;margin-bottom:1rem;text-transform:uppercase;letter-spacing:0.06em">Hatua 1 / 3 — Maelezo ya Kampeni</div>
+        <div class="form-group">
+          <label class="form-label">Jina la Kampeni *</label>
+          <span class="form-sublabel">Jina fupi na wazi — halisi, sio la ubunifu tu</span>
+          <input class="form-input" id="c-title" type="text" placeholder="Mfano: Harusi ya Amina na Juma, Msaada wa Matibabu...">
+          <span class="form-error" id="err-title"></span>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Maelezo *</label>
+          <span class="form-sublabel">Eleza hali yako kwa undani. Hadithi nzuri hupata michango zaidi.</span>
+          <textarea class="form-textarea" id="c-desc" rows="5" placeholder="Eleza kwa nini unahitaji fedha hizi, zitakuwa zinatumika vipi, na namna itakavyobadilisha maisha yako..."></textarea>
+          <span class="form-error" id="err-desc"></span>
+          <span class="form-hint"><span id="desc-count">0</span> / 500 herufi (angalau 50)</span>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Aina ya Kampeni *</label>
+          <div class="cat-selector" id="cat-selector">
+            <div class="cat-option" data-val="dharura" onclick="selectCat(this)">
+              <span class="cat-option-icon">🆘</span>Dharura
+            </div>
+            <div class="cat-option" data-val="biashara" onclick="selectCat(this)">
+              <span class="cat-option-icon">💼</span>Biashara
+            </div>
+            <div class="cat-option" data-val="jamii" onclick="selectCat(this)">
+              <span class="cat-option-icon">🏘</span>Jamii
+            </div>
+          </div>
+          <span class="form-error" id="err-cat"></span>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Picha ya Kampeni (hiari)</label>
+          <span class="form-sublabel">Picha nzuri inaongeza heshima ya kampeni. JPEG/PNG/WebP, max 5MB</span>
+          <input class="form-input" id="c-image" type="file" accept="image/jpeg,image/png,image/webp" onchange="previewImage(this)">
+          <div id="image-preview" style="display:none;margin-top:8px">
+            <img id="image-preview-img" style="width:100%;height:140px;object-fit:cover;border-radius:var(--radius-sm);border:1px solid #e0e8d8" alt="preview">
+          </div>
+        </div>
+        <button class="btn btn-primary btn-full btn-lg" onclick="createStep2()">Endelea →</button>
+      </div>
+
+      <div id="create-step-2" style="display:none">
+        <div style="font-size:12px;color:var(--green);font-weight:600;margin-bottom:1rem;text-transform:uppercase;letter-spacing:0.06em">Hatua 2 / 3 — Malengo ya Fedha</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Kiasi Kinachohitajika (TZS) *</label>
+            <input class="form-input" id="c-goal" type="number" min="10000" step="1000" placeholder="Sh 0">
+            <span class="form-hint">Angalau TZS 10,000</span>
+            <span class="form-error" id="err-goal"></span>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Tarehe ya Mwisho (hiari)</label>
+            <input class="form-input" id="c-date" type="date">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Mkoa *</label>
+            <select class="form-select" id="c-region">
+              <option value="">Chagua mkoa...</option>
+              <option>Dar es Salaam</option><option>Mwanza</option><option>Arusha</option>
+              <option>Dodoma</option><option>Mbeya</option><option>Tanga</option>
+              <option>Morogoro</option><option>Zanzibar</option><option>Kilimanjaro</option>
+              <option>Pwani</option><option>Lindi</option><option>Ruvuma</option>
+              <option>Singida</option><option>Tabora</option><option>Kigoma</option>
+              <option>Shinyanga</option><option>Kagera</option><option>Mara</option>
+              <option>Manyara</option><option>Njombe</option><option>Geita</option>
+            </select>
+            <span class="form-error" id="err-region"></span>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Nambari ya Simu ya Mawasiliano *</label>
+            <input class="form-input" id="c-phone" type="tel" placeholder="0712 345 678">
+            <span class="form-error" id="err-phone"></span>
+          </div>
+        </div>
+        <div style="display:flex;gap:10px">
+          <button class="btn btn-ghost" onclick="goCreateStep(1)">← Rudi</button>
+          <button class="btn btn-primary" style="flex:1;justify-content:center;padding:10px" onclick="createStep3()">Endelea →</button>
+        </div>
+      </div>
+
+      <div id="create-step-3" style="display:none">
+        <div style="font-size:12px;color:var(--green);font-weight:600;margin-bottom:1rem;text-transform:uppercase;letter-spacing:0.06em">Hatua 3 / 3 — Njia ya Kupokea Fedha</div>
+        <div class="form-group">
+          <label class="form-label">Chagua Njia ya Malipo *</label>
+          <div class="pay-grid" id="create-pay-grid">
+            <div class="pay-option" onclick="selectCreatePay(this,'mpesa')"><div class="pay-icon" style="background:#EAF3DE;color:#27500A">MP</div><div><div class="pay-name">M-Pesa</div><div class="pay-desc">Vodacom Tanzania</div></div></div>
+            <div class="pay-option" onclick="selectCreatePay(this,'tigo')"><div class="pay-icon" style="background:#E6F1FB;color:#0C447C">TP</div><div><div class="pay-name">Tigo Pesa</div><div class="pay-desc">Tigo Tanzania</div></div></div>
+            <div class="pay-option" onclick="selectCreatePay(this,'airtel')"><div class="pay-icon" style="background:#FAECE7;color:#993C1D">AM</div><div><div class="pay-name">Airtel Money</div><div class="pay-desc">Airtel Tanzania</div></div></div>
+            <div class="pay-option" onclick="selectCreatePay(this,'bank')"><div class="pay-icon" style="background:#FAEEDA;color:#854F0B">BK</div><div><div class="pay-name">Benki</div><div class="pay-desc">NMB / CRDB / NBC</div></div></div>
+          </div>
+          <span class="form-error" id="err-pay"></span>
+        </div>
+        <div class="form-group" id="account-group">
+          <label class="form-label" id="account-label">Nambari ya Akaunti *</label>
+          <input class="form-input" id="c-account" type="text" placeholder="Nambari yako...">
+          <span class="form-hint" id="account-hint">Nambari ambayo wafadhili watatumia</span>
+          <span class="form-error" id="err-account"></span>
+        </div>
+        <div class="form-group" id="bank-name-group" style="display:none">
+          <label class="form-label">Jina la Benki</label>
+          <select class="form-select" id="c-bank-name">
+            <option value="">Chagua benki...</option>
+            <option>NMB Bank</option><option>CRDB Bank</option><option>NBC Bank</option>
+            <option>Stanbic Bank</option><option>Equity Bank</option><option>Azania Bank</option>
+            <option>DTB Bank</option><option>Exim Bank</option>
+          </select>
+        </div>
+        <div style="background:var(--amber-light);border-radius:var(--radius-sm);padding:12px;margin-bottom:1.25rem;font-size:12px;color:var(--amber);line-height:1.6">
+          <strong>Muhimu:</strong> Ada ya jukwaa ni 2.5% tu ya fedha zilizokusanywa. Hakuna ada za awali. Kampeni zitakaguliwa kabla ya kuidhishwa.
+        </div>
+        <div style="display:flex;gap:10px">
+          <button class="btn btn-ghost" onclick="goCreateStep(2)">← Rudi</button>
+          <button class="btn btn-primary" style="flex:1;justify-content:center;padding:10px" id="submit-create-btn" onclick="submitCampaign()">Chapisha Kampeni</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ────────── DONATE PAGE ───────────────────────── -->
+<div id="page-donate" class="page">
+  <div class="container" style="padding-top:2rem;padding-bottom:3rem">
+    <button class="back-btn" id="donate-back">← Rudi</button>
+    <h1 style="font-size:22px;font-weight:600;margin-bottom:1.5rem">Toa Mchango</h1>
+    <div class="donate-layout">
+      <div>
+        <div class="donate-summary" id="donate-summary"></div>
+        <div id="recent-donors" style="margin-top:1rem"></div>
+      </div>
+      <div>
+        <div class="form-card" style="padding:1.5rem">
+          <div style="font-size:14px;font-weight:600;margin-bottom:1rem">Kiasi cha Mchango</div>
+          <div class="amount-grid">
+            <div class="amount-btn" onclick="selectAmount(this,5000)">Sh 5K</div>
+            <div class="amount-btn" onclick="selectAmount(this,10000)">Sh 10K</div>
+            <div class="amount-btn" onclick="selectAmount(this,25000)">Sh 25K</div>
+            <div class="amount-btn" onclick="selectAmount(this,50000)">Sh 50K</div>
+            <div class="amount-btn" onclick="selectAmount(this,100000)">Sh 100K</div>
+            <div class="amount-btn" onclick="selectAmount(this,250000)">Sh 250K</div>
+            <div class="amount-btn" onclick="selectAmount(this,500000)">Sh 500K</div>
+            <div class="amount-btn" onclick="selectAmount(this,1000000)">Sh 1M</div>
+          </div>
+          <input class="form-input" id="custom-amount" type="number" placeholder="Au weka kiasi chochote (TZS)" style="margin-bottom:1.25rem">
+
+          <div style="font-size:14px;font-weight:600;margin-bottom:10px">Njia ya Malipo</div>
+          <div class="pay-grid" id="donate-pay-grid">
+            <div class="pay-option" onclick="selectDonatePay(this,'mpesa')"><div class="pay-icon" style="background:#EAF3DE;color:#27500A">MP</div><div><div class="pay-name">M-Pesa</div><div class="pay-desc">Vodacom</div></div></div>
+            <div class="pay-option" onclick="selectDonatePay(this,'tigo')"><div class="pay-icon" style="background:#E6F1FB;color:#0C447C">TP</div><div><div class="pay-name">Tigo Pesa</div><div class="pay-desc">Tigo</div></div></div>
+            <div class="pay-option" onclick="selectDonatePay(this,'airtel')"><div class="pay-icon" style="background:#FAECE7;color:#993C1D">AM</div><div><div class="pay-name">Airtel Money</div><div class="pay-desc">Airtel</div></div></div>
+            <div class="pay-option" onclick="selectDonatePay(this,'bank')"><div class="pay-icon" style="background:#FAEEDA;color:#854F0B">BK</div><div><div class="pay-name">Benki</div><div class="pay-desc">NMB / CRDB</div></div></div>
+          </div>
+
+          <div id="donate-phone-group" style="display:none;margin-top:12px">
+            <div class="form-group">
+              <label class="form-label">Nambari ya Simu yako</label>
+              <div class="phone-input-wrapper">
+                <span class="phone-prefix">+255</span>
+                <input class="form-input" id="donor-phone" type="tel" placeholder="712 345 678">
+              </div>
+              <span class="form-hint">Nambari unayotumia kulipa</span>
+            </div>
+          </div>
+
+          <div id="pay-details-box" class="pay-details-box" style="display:none">
+            <div class="pay-instruction" id="pay-instr-text"></div>
+            <div class="pay-number" id="pay-number-text"></div>
+            <div class="pay-hint" id="pay-hint-text"></div>
+          </div>
+
+          <div class="form-group" style="margin-top:12px">
+            <label class="form-label">Ujumbe (hiari)</label>
+            <input class="form-input" id="donor-message" type="text" placeholder="Ujumbe wa moyo...">
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:1rem;font-size:13px">
+            <input type="checkbox" id="anonymous-check" style="width:16px;height:16px;cursor:pointer">
+            <label for="anonymous-check" style="cursor:pointer">Toa mchango bila jina (siri)</label>
+          </div>
+          <button class="btn btn-primary btn-full btn-lg" id="donate-submit-btn" onclick="submitDonation()">
+            <span id="donate-btn-text">Thibitisha Mchango</span>
+          </button>
+          <p style="font-size:11px;color:#888;margin-top:10px;text-align:center">Malipo yanashughulikiwa kwa usalama na AzamPay</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ────────── SUCCESS PAGE ──────────────────────── -->
+<div id="page-success" class="page">
+  <div class="container" style="padding:3rem 1.25rem;max-width:480px;margin:0 auto;text-align:center">
+    <div class="success-icon">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#3B6D11" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="success-title" id="success-title">Hongera!</div>
+    <div class="success-sub" id="success-sub"></div>
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+      <button class="btn btn-primary btn-lg" onclick="showPage('home')">Nyumbani</button>
+      <button class="btn btn-secondary btn-lg" onclick="showPage('browse')">Gundua Zaidi</button>
+    </div>
+    <div id="share-buttons" style="margin-top:1.5rem;display:none">
+      <p style="font-size:13px;color:#666;margin-bottom:10px">Shiriki kampeni yako:</p>
+      <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
+        <button class="btn btn-ghost" onclick="shareWhatsApp()">WhatsApp</button>
+        <button class="btn btn-ghost" onclick="copyLink()">Nakili Kiungo</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ────────── PROFILE PAGE ──────────────────────── -->
+<div id="page-profile" class="page">
+  <div class="container" style="padding-top:2rem;padding-bottom:3rem;max-width:780px">
+    <button class="back-btn" onclick="showPage('home')">← Nyumbani</button>
+    <div class="profile-header">
+      <div class="profile-avatar" id="profile-avatar">U</div>
+      <div>
+        <div style="font-size:20px;font-weight:600;font-family:'Outfit',sans-serif" id="profile-name">Mtumiaji</div>
+        <div style="font-size:13px;color:#888" id="profile-phone"></div>
+        <button class="btn btn-ghost" style="margin-top:6px;padding:5px 0;font-size:12px;color:var(--coral)" onclick="logout()">Toka nje</button>
+      </div>
+    </div>
+    <div class="stat-cards" id="profile-stats">
+      <div class="stat-card"><div class="stat-card-n">—</div><div class="stat-card-l">Kampeni</div></div>
+      <div class="stat-card"><div class="stat-card-n">—</div><div class="stat-card-l">Michango</div></div>
+      <div class="stat-card"><div class="stat-card-n">—</div><div class="stat-card-l">Kilichotolewa</div></div>
+    </div>
+    <div style="font-size:16px;font-weight:600;font-family:'Outfit',sans-serif;margin-bottom:1rem">Kampeni Zangu</div>
+    <div id="my-campaigns-list">
+      <p style="color:#888;font-size:13px">Inapakia...</p>
+    </div>
+    <div style="margin-top:2rem;text-align:center">
+      <button class="btn btn-primary btn-lg" onclick="showPage('create')">+ Anza Kampeni Mpya</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ────────── State ─────────────────────────────────────
+const API = '/api';
+let state = {
+  user: null,
+  token: null,
+  campaigns: [],
+  browsePage: 1,
+  browseFilter: '',
+  browseSearch: '',
+  selectedCampaign: null,
+  selectedAmount: null,
+  donatePay: null,
+  createCat: null,
+  createPay: null,
+  newCampaignId: null,
+  searchTimer: null,
+};
+
+// ────────── Utils ──────────────────────────────────────
+function fmt(n) {
+  if (n >= 1e9) return 'Sh ' + (n/1e9).toFixed(1) + 'B';
+  if (n >= 1e6) return 'Sh ' + (n/1e6).toFixed(1) + 'M';
+  if (n >= 1e3) return 'Sh ' + (n/1e3).toFixed(0) + 'K';
+  return 'Sh ' + n.toLocaleString('sw-TZ');
+}
+function pct(r, g) { return Math.min(100, Math.round(r / g * 100)); }
+function toast(msg, type = 'success') {
+  const el = document.createElement('div');
+  el.className = 'toast ' + type;
+  el.textContent = msg;
+  document.getElementById('toast-container').appendChild(el);
+  setTimeout(() => el.remove(), 3500);
+}
+function showLoading(msg = 'Inapakia...') {
+  document.getElementById('loading-text').textContent = msg;
+  document.getElementById('loading-overlay').classList.remove('hidden');
+}
+function hideLoading() { document.getElementById('loading-overlay').classList.add('hidden'); }
+
+async function api(method, path, data, opts = {}) {
+  const headers = { 'Content-Type': 'application/json' };
+  if (state.token) headers['Authorization'] = 'Bearer ' + state.token;
+  const res = await fetch(API + path, {
+    method,
+    headers: opts.formData ? { Authorization: 'Bearer ' + state.token } : headers,
+    body: opts.formData ? data : (data ? JSON.stringify(data) : undefined),
+  });
+  const json = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(json.error || 'Hitilafu ya seva');
+  return json;
+}
+
+// ────────── Auth ──────────────────────────────────────
+function loadAuth() {
+  try {
+    const saved = localStorage.getItem('msaadafund_auth');
+    if (saved) {
+      const { user, token } = JSON.parse(saved);
+      state.user = user; state.token = token;
+      updateNavUser();
+    } else { showNavAuthBtn(); }
+  } catch { showNavAuthBtn(); }
+}
+function saveAuth(user, token) {
+  state.user = user; state.token = token;
+  localStorage.setItem('msaadafund_auth', JSON.stringify({ user, token }));
+  updateNavUser();
+}
+function logout() {
+  state.user = null; state.token = null;
+  localStorage.removeItem('msaadafund_auth');
+  showNavAuthBtn();
+  showPage('home');
+  toast('Umetoka nje', 'info');
+}
+function updateNavUser() {
+  document.getElementById('nav-auth-btn').style.display = 'none';
+  document.getElementById('nav-user-area').style.display = 'flex';
+  const initials = (state.user.name || state.user.phone.slice(-4)).slice(0, 2).toUpperCase();
+  document.getElementById('nav-avatar').textContent = initials;
+  document.getElementById('nav-username').textContent = state.user.name ? state.user.name.split(' ')[0] : 'Mtumiaji';
+}
+function showNavAuthBtn() {
+  document.getElementById('nav-auth-btn').style.display = 'flex';
+  document.getElementById('nav-user-area').style.display = 'none';
+}
+function requireAuthThen(fn) {
+  if (state.user) { fn(); }
+  else { openAuthModal(() => fn()); }
+}
+let authCallback = null;
+function openAuthModal(callback) {
+  authCallback = callback || null;
+  showAuthStep('phone');
+  document.getElementById('auth-modal').classList.remove('hidden');
+}
+function closeAuthModal() { document.getElementById('auth-modal').classList.add('hidden'); }
+function showAuthStep(step) {
+  document.getElementById('auth-step-phone').style.display = step === 'phone' ? 'block' : 'none';
+  document.getElementById('auth-step-otp').style.display = step === 'otp' ? 'block' : 'none';
+}
+async function sendOTP() {
+  const raw = document.getElementById('auth-phone').value.trim();
+  const phone = '0' + raw.replace(/^0/, '').replace(/\s/g, '');
+  const name  = document.getElementById('auth-name').value.trim();
+  const btn = document.getElementById('auth-send-btn');
+  btn.disabled = true; btn.textContent = 'Inatuma...';
+  try {
+    const res = await api('POST', '/auth/send-otp', { phone, name });
+    document.getElementById('auth-otp-hint').textContent =
+      res.otp ? `[DEV] OTP: ${res.otp}` : `Nambari imetumwa kwa ${phone}`;
+    showAuthStep('otp');
+    document.querySelector('.otp-input').focus();
+  } catch (e) { toast(e.message, 'error'); }
+  finally { btn.disabled = false; btn.textContent = 'Tuma Nambari ya Uthibitisho'; }
+}
+function otpNext(el, idx) {
+  const inputs = document.querySelectorAll('.otp-input');
+  if (el.value.length === 1 && idx < 5) inputs[idx + 1].focus();
+  if (idx === 5 && el.value) verifyOTP();
+}
+async function verifyOTP() {
+  const inputs = document.querySelectorAll('.otp-input');
+  const code = [...inputs].map(i => i.value).join('');
+  const phone = '0' + document.getElementById('auth-phone').value.trim().replace(/^0/, '').replace(/\s/g, '');
+  const name  = document.getElementById('auth-name').value.trim();
+  if (code.length < 6) { toast('Ingiza nambari zote 6', 'error'); return; }
+  const btn = document.getElementById('auth-verify-btn');
+  btn.disabled = true; btn.textContent = 'Inathibitisha...';
+  try {
+    const res = await api('POST', '/auth/verify-otp', { phone, code, name });
+    saveAuth(res.user, res.token);
+    closeAuthModal();
+    toast(res.message || 'Umeingia!');
+    if (authCallback) { authCallback(); authCallback = null; }
+  } catch (e) { toast(e.message, 'error'); }
+  finally { btn.disabled = false; btn.textContent = 'Thibitisha'; }
+}
+
+// ────────── Page navigation ───────────────────────────
+function showPage(name) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + name).classList.add('active');
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  const navMap = { home: 'nav-home', browse: 'nav-browse', create: 'nav-create' };
+  if (navMap[name]) document.getElementById(navMap[name]).classList.add('active');
+  window.scrollTo({ top: 0 });
+
+  if (name === 'browse') loadBrowse(true);
+  if (name === 'profile') loadProfile();
+}
+
+// ────────── Campaigns ─────────────────────────────────
+function campaignCard(c) {
+  const p = pct(c.raised_amount, c.goal_amount);
+  const days = c.end_date ? Math.max(0, Math.ceil((new Date(c.end_date) - Date.now()) / 86400000)) : null;
+  const daysHtml = days !== null && days <= 7 ? `<span class="urgency-tag">${days} siku!</span>` : (days ? `<span>${days} siku zilizo</span>` : '');
+  return `<div class="campaign-card" onclick="openDonate('${c.id}')">
+    <div class="campaign-img" style="background:${catBg(c.category)};color:${catCol(c.category)}">
+      ${c.image_url ? `<img src="${c.image_url}" alt="${c.title}">` : c.title.slice(0,2).toUpperCase()}
+    </div>
+    <div class="campaign-body">
+      <span class="campaign-badge badge-${c.category}">${c.category}</span>
+      <div class="campaign-title">${c.title}</div>
+      <div class="campaign-meta-row"><span>${c.region}</span>${daysHtml}</div>
+      <div class="progress"><div class="progress-fill" style="width:${p}%"></div></div>
+      <div class="campaign-footer">
+        <span class="raised">${fmt(c.raised_amount)}</span>
+        <span class="percent">${p}% ya ${fmt(c.goal_amount)}</span>
+      </div>
+      <button class="donate-btn" onclick="event.stopPropagation();openDonate('${c.id}')">Toa Mchango</button>
+    </div>
+  </div>`;
+}
+function catBg(c) { return {dharura:'#FAECE7',biashara:'#FAEEDA',jamii:'#E1F5EE'}[c] || '#f0f0f0'; }
+function catCol(c) { return {dharura:'#993C1D',biashara:'#854F0B',jamii:'#0F6E56'}[c] || '#333'; }
+
+async function loadHomeCampaigns() {
+  try {
+    const res = await api('GET', '/campaigns?status=active&limit=3');
+    const el = document.getElementById('home-campaigns');
+    if (!res.data.length) { el.innerHTML = '<p style="color:#888;font-size:13px">Hakuna kampeni kwa sasa</p>'; return; }
+    el.innerHTML = res.data.map(campaignCard).join('');
+  } catch (e) {
+    document.getElementById('home-campaigns').innerHTML = '<p style="color:#888">Imeshindwa kupakia</p>';
+  }
+}
+
+function browseByCategory(cat) {
+  state.browseFilter = cat;
+  showPage('browse');
+  document.querySelectorAll('.filter-tab').forEach(t => {
+    t.classList.toggle('active', t.dataset.cat === cat);
+  });
+}
+function setFilter(cat, el) {
+  state.browseFilter = cat;
+  state.browsePage = 1;
+  document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  loadBrowse(true);
+}
+function onSearchChange() {
+  clearTimeout(state.searchTimer);
+  state.searchTimer = setTimeout(() => {
+    state.browseSearch = document.getElementById('search-input').value.trim();
+    state.browsePage = 1;
+    loadBrowse(true);
+  }, 400);
+}
+async function loadBrowse(reset = false) {
+  if (reset) { state.browsePage = 1; }
+  const params = new URLSearchParams({ status: 'active', page: state.browsePage, limit: 9 });
+  if (state.browseFilter) params.set('category', state.browseFilter);
+  if (state.browseSearch) params.set('search', state.browseSearch);
+  const grid = document.getElementById('browse-campaigns');
+  if (reset) grid.innerHTML = '<div class="skeleton skeleton-card"></div>'.repeat(3);
+  try {
+    const res = await api('GET', '/campaigns?' + params);
+    const cards = res.data.map(campaignCard).join('');
+    if (reset) grid.innerHTML = cards || '';
+    else grid.innerHTML += cards;
+    document.getElementById('browse-empty').style.display = !res.data.length && reset ? 'block' : 'none';
+    const more = res.meta.page < res.meta.pages;
+    document.getElementById('browse-load-more').style.display = more ? 'block' : 'none';
+    if (!res.data.length && reset) grid.innerHTML = '';
+  } catch { grid.innerHTML = '<p style="color:#888;font-size:13px;padding:1rem 0">Imeshindwa kupakia kampeni</p>'; }
+}
+async function loadMoreCampaigns() { state.browsePage++; await loadBrowse(false); }
+
+// ────────── Create campaign ───────────────────────────
+let createData = {};
+function goCreateStep(n) {
+  [1,2,3].forEach(i => document.getElementById(`create-step-${i}`).style.display = 'none');
+  document.getElementById(`create-step-${n}`).style.display = 'block';
+  document.querySelectorAll('.step-ind').forEach((el, i) => {
+    el.style.background = i < n ? 'var(--green)' : '#e0e8d8';
+  });
+  document.querySelector('.form-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+function selectCat(el) {
+  document.querySelectorAll('.cat-option').forEach(e => e.classList.remove('selected'));
+  el.classList.add('selected');
+  state.createCat = el.dataset.val;
+}
+function previewImage(input) {
+  const file = input.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    document.getElementById('image-preview-img').src = e.target.result;
+    document.getElementById('image-preview').style.display = 'block';
+  };
+  reader.readAsDataURL(file);
+}
+document.addEventListener('DOMContentLoaded', () => {
+  const desc = document.getElementById('c-desc');
+  if (desc) desc.addEventListener('input', () => {
+    document.getElementById('desc-count').textContent = desc.value.length;
+  });
+});
+function createStep2() {
+  const title = document.getElementById('c-title').value.trim();
+  const desc  = document.getElementById('c-desc').value.trim();
+  let ok = true;
+  if (title.length < 5) { document.getElementById('err-title').textContent = 'Jina lazima liwe na herufi 5+'; ok = false; } else { document.getElementById('err-title').textContent = ''; }
+  if (desc.length < 50) { document.getElementById('err-desc').textContent = 'Maelezo lazima yawe na herufi 50+'; ok = false; } else { document.getElementById('err-desc').textContent = ''; }
+  if (!state.createCat) { document.getElementById('err-cat').textContent = 'Chagua aina ya kampeni'; ok = false; } else { document.getElementById('err-cat').textContent = ''; }
+  if (!ok) return;
+  createData.title = title; createData.description = desc; createData.category = state.createCat;
+  goCreateStep(2);
+}
+function createStep3() {
+  const goal   = parseFloat(document.getElementById('c-goal').value);
+  const region = document.getElementById('c-region').value;
+  const phone  = document.getElementById('c-phone').value.trim();
+  let ok = true;
+  if (!goal || goal < 10000) { document.getElementById('err-goal').textContent = 'Angalau TZS 10,000'; ok = false; } else { document.getElementById('err-goal').textContent = ''; }
+  if (!region) { document.getElementById('err-region').textContent = 'Chagua mkoa'; ok = false; } else { document.getElementById('err-region').textContent = ''; }
+  if (!phone) { document.getElementById('err-phone').textContent = 'Simu inahitajika'; ok = false; } else { document.getElementById('err-phone').textContent = ''; }
+  if (!ok) return;
+  createData.goal_amount = goal; createData.region = region; createData.end_date = document.getElementById('c-date').value;
+  goCreateStep(3);
+}
+function selectCreatePay(el, key) {
+  document.querySelectorAll('#create-pay-grid .pay-option').forEach(e => e.classList.remove('selected'));
+  el.classList.add('selected');
+  state.createPay = key;
+  const hints = { mpesa: 'Nambari yako ya M-Pesa (0754...)', tigo: 'Nambari yako ya Tigo Pesa (0713...)', airtel: 'Nambari yako ya Airtel Money (0688...)', bank: 'Nambari ya akaunti ya benki' };
+  document.getElementById('account-label').textContent = key === 'bank' ? 'Nambari ya Akaunti ya Benki *' : 'Nambari ya Simu *';
+  document.getElementById('account-hint').textContent = hints[key];
+  document.getElementById('bank-name-group').style.display = key === 'bank' ? 'block' : 'none';
+}
+async function submitCampaign() {
+  if (!state.createPay) { document.getElementById('err-pay').textContent = 'Chagua njia ya malipo'; return; }
+  const account = document.getElementById('c-account').value.trim();
+  if (!account) { document.getElementById('err-account').textContent = 'Akaunti inahitajika'; return; }
+  document.getElementById('err-pay').textContent = '';
+  document.getElementById('err-account').textContent = '';
+  createData.payment_method = state.createPay;
+  createData.payment_account = account;
+  createData.bank_name = document.getElementById('c-bank-name').value;
+  const imageFile = document.getElementById('c-image').files[0];
+  const btn = document.getElementById('submit-create-btn');
+  btn.disabled = true; btn.innerHTML = '<div class="loading-spinner" style="border-color:rgba(255,255,255,0.3);border-top-color:#fff"></div> Inachapisha...';
+  try {
+    let res;
+    if (imageFile) {
+      const fd = new FormData();
+      Object.entries(createData).forEach(([k,v]) => { if (v) fd.append(k, v); });
+      fd.append('image', imageFile);
+      res = await api('POST', '/campaigns', fd, { formData: true });
+    } else {
+      res = await api('POST', '/campaigns', createData);
+    }
+    state.newCampaignId = res.data.id;
+    document.getElementById('success-title').textContent = 'Kampeni Imechapishwa!';
+    document.getElementById('success-sub').innerHTML = `Kampeni yako "<strong>${createData.title}</strong>" imesajiliwa vizuri.<br>Itapitiwa na timu yetu hivi karibuni. Utajulishwa kwa SMS.<br><br><em style="font-size:12px">Shiriki kiungo chako na marafiki na familia kupitia WhatsApp!</em>`;
+    document.getElementById('share-buttons').style.display = 'block';
+    showPage('success');
+    state.createCat = null; state.createPay = null; createData = {};
+  } catch(e) { toast(e.message, 'error'); }
+  finally { btn.disabled = false; btn.textContent = 'Chapisha Kampeni'; }
+}
+function shareWhatsApp() {
+  const url = state.newCampaignId ? `${location.origin}/campaign/${state.newCampaignId}` : location.origin;
+  window.open('https://wa.me/?text=' + encodeURIComponent(`Msaada! Angalia kampeni hii kwenye MsaadaFund: ${url}`));
+}
+function copyLink() {
+  const url = state.newCampaignId ? `${location.origin}/campaign/${state.newCampaignId}` : location.origin;
+  navigator.clipboard.writeText(url).then(() => toast('Kiungo kimenakilwa!')).catch(() => toast('Imeshindwa kunakili', 'error'));
+}
+
+// ────────── Donate ────────────────────────────────────
+const payInfo = {
+  mpesa:  { instr: 'Tuma kwa M-Pesa:', hint: 'Maelezo: Jina lako + Jina la Kampeni' },
+  tigo:   { instr: 'Tuma kwa Tigo Pesa:', hint: 'Maelezo: Jina lako + Jina la Kampeni' },
+  airtel: { instr: 'Tuma kwa Airtel Money:', hint: 'Maelezo: Jina lako + Jina la Kampeni' },
+  bank:   { instr: 'Tuma kwa benki (NMB):', hint: 'Ref: Jina lako · CRDB pia inakubaliwa' },
+};
+async function openDonate(campaignId) {
+  showLoading('Inapakia kampeni...');
+  try {
+    const res = await api('GET', `/campaigns/${campaignId}`);
+    const c = res.data;
+    state.selectedCampaign = c;
+    state.selectedAmount = null;
+    state.donatePay = null;
+
+    // Summary
+    const p = pct(c.raised_amount, c.goal_amount);
+    document.getElementById('donate-summary').innerHTML = `
+      <span class="campaign-badge badge-${c.category}">${c.category}</span>
+      <div class="donate-campaign-title">${c.title}</div>
+      <div style="font-size:12px;color:#888;margin-bottom:10px">${c.region} · ${c.donor_count} wafadhili</div>
+      <div class="progress"><div class="progress-fill" style="width:${p}%"></div></div>
+      <div class="campaign-footer" style="margin-top:8px">
+        <span class="raised">${fmt(c.raised_amount)} kukusanywa</span>
+        <span class="percent">${p}% ya ${fmt(c.goal_amount)}</span>
+      </div>
+      ${c.description ? `<p style="font-size:13px;color:#444;margin-top:10px;line-height:1.6">${c.description.slice(0,200)}${c.description.length > 200 ? '...' : ''}</p>` : ''}
+    `;
+
+    // Recent donors
+    const donors = res.donations || [];
+    document.getElementById('recent-donors').innerHTML = donors.length ? `
+      <div style="font-size:14px;font-weight:600;font-family:'Outfit',sans-serif;margin-bottom:10px">Wafadhili wa Hivi Karibuni</div>
+      ${donors.map(d => `<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f0f0f0;font-size:13px">
+        <span style="font-weight:600">${d.name}</span>
+        <span style="color:var(--green);font-weight:600">${fmt(d.amount)}</span>
+      </div>`).join('')}
+    ` : '';
+
+    // Reset donate form
+    document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('selected'));
+    document.querySelectorAll('#donate-pay-grid .pay-option').forEach(e => e.classList.remove('selected'));
+    document.getElementById('donate-phone-group').style.display = 'none';
+    document.getElementById('pay-details-box').style.display = 'none';
+    document.getElementById('custom-amount').value = '';
+    document.getElementById('donor-message').value = '';
+    document.getElementById('anonymous-check').checked = false;
+    document.getElementById('donate-back').onclick = () => showPage('browse');
+
+    showPage('donate');
+  } catch(e) { toast(e.message, 'error'); }
+  finally { hideLoading(); }
+}
+function selectAmount(el, val) {
+  state.selectedAmount = val;
+  document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('selected'));
+  el.classList.add('selected');
+  document.getElementById('custom-amount').value = '';
+}
+function selectDonatePay(el, key) {
+  state.donatePay = key;
+  document.querySelectorAll('#donate-pay-grid .pay-option').forEach(e => e.classList.remove('selected'));
+  el.classList.add('selected');
+  const c = state.selectedCampaign;
+  const phoneGroup = document.getElementById('donate-phone-group');
+  const box = document.getElementById('pay-details-box');
+  if (key === 'bank') {
+    phoneGroup.style.display = 'none';
+    box.style.display = 'block';
+    document.getElementById('pay-instr-text').textContent = payInfo.bank.instr;
+    document.getElementById('pay-number-text').textContent = c.payment_account;
+    document.getElementById('pay-hint-text').textContent = payInfo.bank.hint;
+  } else {
+    phoneGroup.style.display = 'block';
+    if (state.user?.phone) {
+      const p = state.user.phone.replace(/^255/, '0');
+      document.getElementById('donor-phone').value = p.replace(/(\d{4})(\d{3})(\d{3})/, '$1 $2 $3');
+    }
+    box.style.display = 'none';
+  }
+}
+async function submitDonation() {
+  const amount = state.selectedAmount || parseInt(document.getElementById('custom-amount').value);
+  if (!amount || amount < 500) { toast('Weka kiasi cha angalau Sh 500', 'error'); return; }
+  if (!state.donatePay) { toast('Chagua njia ya malipo', 'error'); return; }
+  const phone = document.getElementById('donor-phone').value.replace(/\s/g, '');
+  if (state.donatePay !== 'bank' && !phone) { toast('Weka nambari yako ya simu', 'error'); return; }
+  const btn = document.getElementById('donate-submit-btn');
+  btn.disabled = true;
+  document.getElementById('donate-btn-text').innerHTML = '<div class="loading-spinner" style="border-color:rgba(255,255,255,0.3);border-top-color:#fff;display:inline-block;vertical-align:middle;margin-right:6px"></div>Inaprocessa...';
+  try {
+    const payload = {
+      campaign_id:     state.selectedCampaign.id,
+      amount,
+      payment_method:  state.donatePay,
+      donor_phone:     phone || state.user?.phone,
+      donor_name:      state.user?.name,
+      message:         document.getElementById('donor-message').value.trim(),
+      is_anonymous:    document.getElementById('anonymous-check').checked,
+    };
+    const res = await api('POST', '/donations', payload);
+    const payName = { mpesa: 'M-Pesa', tigo: 'Tigo Pesa', airtel: 'Airtel Money', bank: 'Benki' }[state.donatePay];
+    document.getElementById('success-title').textContent = 'Asante Sana! Mungu Akubariki!';
+    document.getElementById('success-sub').innerHTML =
+      state.donatePay === 'bank'
+      ? `Ombi lako la mchango wa <strong>${fmt(amount)}</strong> limesajiliwa.<br>Tuma fedha kwa benki kwa akaunti: <strong>${res.bankDetails?.accountNumber}</strong><br>Ref: <strong>${res.bankDetails?.reference}</strong>`
+      : `Ombi la malipo la <strong>${fmt(amount)}</strong> limetumwa kwenye simu yako.<br>Thibitisha kwa kuingiza PIN yako ya <strong>${payName}</strong>.<br><br><em style="font-size:12px">Kampeni: "${state.selectedCampaign.title}"</em>`;
+    document.getElementById('share-buttons').style.display = 'none';
+    state.newCampaignId = null;
+    showPage('success');
+  } catch(e) { toast(e.message, 'error'); }
+  finally {
+    btn.disabled = false;
+    document.getElementById('donate-btn-text').textContent = 'Thibitisha Mchango';
+  }
+}
+
+// ────────── Profile ───────────────────────────────────
+async function loadProfile() {
+  if (!state.user) { showPage('home'); openAuthModal(); return; }
+  try {
+    const res = await api('GET', '/auth/me');
+    const u = res.user;
+    document.getElementById('profile-avatar').textContent = (u.name || u.phone.slice(-4)).slice(0,2).toUpperCase();
+    document.getElementById('profile-name').textContent = u.name || 'Mtumiaji';
+    document.getElementById('profile-phone').textContent = '+' + u.phone;
+    const s = res.stats;
+    document.getElementById('profile-stats').innerHTML = `
+      <div class="stat-card"><div class="stat-card-n">${s.campaigns}</div><div class="stat-card-l">Kampeni</div></div>
+      <div class="stat-card"><div class="stat-card-n">${s.donations}</div><div class="stat-card-l">Michango</div></div>
+      <div class="stat-card"><div class="stat-card-n">${fmt(s.totalDonated)}</div><div class="stat-card-l">Kilichotolewa</div></div>
+    `;
+    const cRes = await api('GET', '/campaigns/my/list');
+    const myCamps = cRes.data;
+    document.getElementById('my-campaigns-list').innerHTML = myCamps.length
+      ? myCamps.map(c => {
+          const p = pct(c.raised_amount, c.goal_amount);
+          const statusCol = { active:'var(--green)', pending:'var(--amber)', completed:'#888', rejected:'var(--coral)' }[c.status] || '#888';
+          return `<div style="background:#fff;border:1px solid #e8eee2;border-radius:var(--radius);padding:14px;margin-bottom:12px;cursor:pointer" onclick="openDonate('${c.id}')">
+            <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:8px">
+              <div style="font-weight:600;font-size:14px;font-family:'Outfit',sans-serif">${c.title}</div>
+              <span style="font-size:11px;font-weight:600;color:${statusCol};background:${statusCol}18;padding:2px 8px;border-radius:4px;text-transform:uppercase;white-space:nowrap;margin-left:8px">${c.status}</span>
+            </div>
+            <div class="progress"><div class="progress-fill" style="width:${p}%"></div></div>
+            <div style="display:flex;justify-content:space-between;font-size:12px;margin-top:6px">
+              <span style="color:var(--green);font-weight:600">${fmt(c.raised_amount)} / ${fmt(c.goal_amount)}</span>
+              <span style="color:#888">${c.donor_count} wafadhili</span>
+            </div>
+          </div>`;
+        }).join('')
+      : '<p style="color:#888;font-size:13px">Bado hujafungua kampeni yoyote. <button class="btn btn-ghost" style="padding:0;color:var(--green)" onclick="showPage(\'create\')">Anza hapa →</button></p>';
+  } catch(e) {
+    if (e.message.includes('Tokeni')) { logout(); return; }
+    toast(e.message, 'error');
+  }
+}
+
+// ────────── Init ──────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  loadAuth();
+  loadHomeCampaigns();
+  // If no user, show auth button after a tick
+  if (!state.user) {
+    setTimeout(() => document.getElementById('nav-auth-btn').style.display = 'flex', 0);
+  }
+});
+</script>
+</body>
+</html>
